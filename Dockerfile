@@ -27,6 +27,7 @@ LABEL "maintainer"="Yegor Bugayenko"
 
 RUN gem install texsc
 RUN gem install texqc
+RUN apt install -y aspell
 
 WORKDIR /w
 COPY ./entry.sh entry.sh
