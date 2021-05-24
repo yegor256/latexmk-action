@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-FROM rultor-image:0.3
+FROM yegor256/rultor-image:1.3
 
 LABEL "repository"="https://github.com/yegor256/latex-make-action"
 LABEL "maintainer"="Yegor Bugayenko"
