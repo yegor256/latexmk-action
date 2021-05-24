@@ -25,6 +25,9 @@ FROM yegor256/rultor-image:1.3
 LABEL "repository"="https://github.com/yegor256/latex-make-action"
 LABEL "maintainer"="Yegor Bugayenko"
 
+RUN gem install texsc
+RUN gem install texqc
+
 WORKDIR /w
 COPY ./entry.sh entry.sh
 
