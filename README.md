@@ -14,6 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: yegor256/latex-make-action@0.1.4
+        with:
+          path: foo
 ```
 
-You should have `Makefile` in your root directory.
+You should have `Makefile` in the `foo` directory of your repository.

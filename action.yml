@@ -28,3 +28,8 @@ branding:
 runs:
   using: 'docker'
   image: Dockerfile
+inputs:
+  path:
+    description: 'The directory with Makefile'
+    required: false
+    default: '.'
