@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: yegor256/latex-make-action@0.1.4
+      - uses: yegor256/latex-make-action@0.1.5
         with:
           path: foo
 ```
