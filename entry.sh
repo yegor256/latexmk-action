@@ -4,4 +4,6 @@ set -e
 
 cd ${GITHUB_WORKSPACE}
 cd ${INPUT_PATH}
+
+texliveonfly *.tex
 make
