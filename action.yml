@@ -33,3 +33,7 @@ inputs:
     description: 'The directory with Makefile'
     required: false
     default: '.'
+  packages:
+    description: 'The space-separated list of LaTeX packages to install first'
+    required: false
+    default: ' '

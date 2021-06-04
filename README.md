@@ -16,6 +16,7 @@ jobs:
       - uses: yegor256/latex-make-action@0.1.5
         with:
           path: foo
+          packages: acmart geometry tikz
 ```
 
 You should have `Makefile` in the `foo` directory of your repository.
