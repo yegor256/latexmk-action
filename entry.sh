@@ -8,10 +8,10 @@ cd ${INPUT_PATH}
 rm -rf /usr/bin/pdflatex
 pdflatex -version
 
-tlmgr init-usertree
-tlmgr update --self
+tlmgr init-usertree || echo 'already setup'
+tlmgr --verify-repo=none update --self
 for p in ${INPUT_PACKAGES}; do
-    tlmgr install ${p}
+    tlmgr --verify-repo=none install ${p}
 done
 
 make
