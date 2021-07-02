@@ -35,5 +35,4 @@ for p in ${INPUT_PACKAGES}; do
     tlmgr --verify-repo=none install ${p}
 done
 
-ls -al
-latexmk test.tex
+latexmk -pdf
