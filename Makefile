@@ -21,4 +21,4 @@
 # SOFTWARE.
 
 test:
-	docker run --rm -v "$$(pwd):/w" -e "GITHUB_WORKSPACE=/w" $$(docker build -q .)
+	docker run --rm -v "$$(pwd):/w" $$(docker build -q .)

@@ -24,13 +24,9 @@
 set -x
 set -e
 
-cd ${GITHUB_WORKSPACE}/${INPUT_PATH}
+cd ${GITHUB_WORKSPACE-/w}
+cd ${INPUT_PATH-.}
 
-pdflatex -version
-
-tlmgr init-usertree || echo 'already setup'
-tlmgr --verify-repo=none update --self
-tlmgr --verify-repo=none install latexmk
 for p in ${INPUT_PACKAGES}; do
     tlmgr --verify-repo=none install ${p}
 done

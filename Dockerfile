@@ -29,6 +29,9 @@ RUN gem install texsc
 RUN gem install texqc
 RUN apt install -y aspell
 
+RUN tlmgr --verify-repo=none update --self
+RUN tlmgr --verify-repo=none install latexmk
+
 WORKDIR /home
 COPY entry.sh /home
 
