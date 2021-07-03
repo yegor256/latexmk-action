@@ -27,8 +27,8 @@ set -e
 cd ${GITHUB_WORKSPACE-/w}
 cd ${INPUT_PATH-.}
 
-for p in ${INPUT_PACKAGES}; do
-    tlmgr --verify-repo=none install ${p}
-done
+if [[ "${INPUT_PACKAGES}" ]]; then
+    tlmgr --verify-repo=none install ${INPUT_PACKAGES}
+fi
 
 latexmk -pdf
