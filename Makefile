@@ -22,3 +22,6 @@
 
 test:
 	docker run --rm -v "$$(pwd):/w" $$(docker build -q .)
+
+clean:
+	rm -f *.dvi *.pdf *.fls *.aux *.fdb_latexmk *.log
