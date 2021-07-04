@@ -32,4 +32,4 @@ if [[ "${INPUT_PACKAGES}" ]]; then
     tlmgr --verify-repo=none install ${INPUT_PACKAGES}
 fi
 
-latexmk -pdf
+latexmk
