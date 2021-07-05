@@ -28,10 +28,10 @@ LABEL "maintainer"="Yegor Bugayenko"
 RUN gem install texsc
 RUN gem install texqc
 RUN apt install -y aspell
-RUN apt install -y biber
 
 RUN tlmgr --verify-repo=none update --self
 RUN tlmgr --verify-repo=none install latexmk
+RUN tlmgr --verify-repo=none install biber
 
 RUN apt install -y python3-pygments
 RUN pip3 install pygments
