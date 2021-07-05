@@ -32,6 +32,8 @@ RUN apt install -y aspell
 RUN tlmgr --verify-repo=none update --self
 RUN tlmgr --verify-repo=none install latexmk
 
+RUN apt install -y biber
+
 RUN apt install -y python3-pygments
 RUN pip3 install pygments
 
