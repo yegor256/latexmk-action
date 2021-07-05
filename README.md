@@ -19,7 +19,10 @@ jobs:
           packages: acmart geometry tikz
 ```
 
-You should have `Makefile` in the `foo` directory of your repository.
+Preferrably, you should have `.latexmkrc` in the `foo` directory of your repository,
+which configures the behavior of [latexmk](https://mg.readthedocs.io/latexmk.html).
+If you don't have special requirements in your project, and just need to compile
+a `.tex` file, skip the config, everything should work out of the box.
 
 In order to test this action, just run:
 
