@@ -1,8 +1,8 @@
-To `make` your LaTeX document by GitHub Action just 
-create a `.github/workflows/make.yml` file:
+To `latexmk` your LaTeX document by GitHub Action just 
+create a `.github/workflows/latexmk.yml` file:
 
 ```yaml
-name: make
+name: latexmk
 on:
   push:
     branches: [ master ]
@@ -16,7 +16,7 @@ jobs:
       - uses: yegor256/latexmk-action@0.1.16
         with:
           path: foo
-          packages: acmart geometry tikz
+          packages: acmart tikz
 ```
 
 Preferrably, you should have `.latexmkrc` in the `foo` directory of your repository,
