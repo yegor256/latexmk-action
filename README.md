@@ -16,6 +16,7 @@ jobs:
       - uses: yegor256/latexmk-action@0.1.16
         with:
           path: foo
+          opts: -pdf
           packages: acmart tikz
 ```
 
@@ -23,6 +24,12 @@ Preferrably, you should have `.latexmkrc` in the `foo` directory of your reposit
 which configures the behavior of [latexmk](https://mg.readthedocs.io/latexmk.html).
 If you don't have special requirements in your project, and just need to compile
 a `.tex` file, skip the config, everything should work out of the box.
+
+The options available (provided via the `with` YAML element):
+
+  * `path` is a relative path of the directory with `.tex` file(s)
+  * `opts` is the options to pass to `latexmk`
+  * `packages` is a comma-separated list of TeXLive package to install
 
 In order to test this action, just run:
 
