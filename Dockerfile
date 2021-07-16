@@ -25,8 +25,8 @@ FROM yegor256/rultor-image:1.5.2
 LABEL "repository"="https://github.com/yegor256/latex-make-action"
 LABEL "maintainer"="Yegor Bugayenko"
 
-RUN gem install texsc
-RUN gem install texqc
+RUN gem install texsc:0.6.0
+RUN gem install texqc:0.6.0
 RUN apt install -y aspell
 
 RUN tlmgr --verify-repo=none update --self
