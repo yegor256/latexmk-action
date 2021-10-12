@@ -33,4 +33,4 @@ if [[ "${INPUT_PACKAGES}" ]]; then
 fi
 
 ls -al
-latexmk ${INPUT_OPTS}
+${INPUT_CMD} ${INPUT_OPTS}

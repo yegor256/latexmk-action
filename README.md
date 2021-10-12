@@ -15,6 +15,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: yegor256/latexmk-action@0.1.16
         with:
+          cmd: latexmk
           path: foo
           opts: -pdf
           packages: acmart tikz
@@ -27,6 +28,7 @@ a `.tex` file, skip the config, everything should work out of the box.
 
 The options available (provided via the `with` YAML element):
 
+  * `cmd` is the command to run (default is `latexmk`)
   * `path` is a relative path of the directory with `.tex` file(s)
   * `opts` is the options to pass to `latexmk`
   * `packages` is a comma-separated list of TeXLive package to install
