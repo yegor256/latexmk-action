@@ -31,7 +31,7 @@ The options available (provided via the `with` YAML element):
   * `cmd` is the command to run (default is `latexmk`)
   * `path` is a relative path of the directory with `.tex` file(s)
   * `opts` is the options to pass to `latexmk`
-  * `packages` is a comma-separated list of TeXLive package to install
+  * `packages` is a space-separated list of TeXLive package to install
 
 In order to test this action, just run:
 
