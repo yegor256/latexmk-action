@@ -1,3 +1,5 @@
+[![test](https://github.com/yegor256/latexmk-action/actions/workflows/test.yml/badge.svg)](https://github.com/yegor256/latexmk-action/actions/workflows/test.yml)
+
 To `latexmk` your LaTeX document by GitHub Action just 
 create a `.github/workflows/latexmk.yml` file:
 

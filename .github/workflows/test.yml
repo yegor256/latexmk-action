@@ -14,4 +14,4 @@ jobs:
           cmd: latexmk
           path: .
           opts: -pdf test
-          packages: ffcode
+          packages: ffcode fvextra
