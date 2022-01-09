@@ -6,12 +6,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Git repository
-        uses: actions/checkout@v2
-      - name: Compile basic LaTeX document
-        uses: ./
+      - uses: actions/checkout@v2
+      - uses: ./
         with:
           cmd: latexmk
           path: .
           opts: -pdf test
-          packages: ffcode fvextra
+          packages: ffcode fvextra catchfile
