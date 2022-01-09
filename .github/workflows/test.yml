@@ -1,0 +1,17 @@
+name: test
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+      - name: Compile basic LaTeX document
+        uses: ./
+        with:
+          cmd: latexmk
+          path: .
+          opts: -pdf test
+          packages: ffcode
