@@ -29,6 +29,7 @@ RUN gem install texsc:0.6.0
 RUN gem install texqc:0.6.0
 RUN apt install -y aspell
 
+RUN tlmgr option repository ctan
 RUN tlmgr --verify-repo=none update --self
 RUN tlmgr --verify-repo=none install latexmk
 RUN tlmgr --verify-repo=none install biber
