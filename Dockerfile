@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-FROM yegor256/rultor-image:1.7.1
+FROM yegor256/rultor-image:1.8.0
 
 LABEL "repository"="https://github.com/yegor256/latexmk-action"
 LABEL "maintainer"="Yegor Bugayenko"
@@ -31,7 +31,6 @@ RUN apt install -y aspell
 
 RUN tlmgr option repository ctan
 RUN tlmgr --verify-repo=none update --self
-RUN tlmgr --verify-repo=none install latexmk
 RUN tlmgr --verify-repo=none install biber
 
 RUN apt install -y python3-pygments
