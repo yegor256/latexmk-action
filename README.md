@@ -7,10 +7,9 @@ create a `.github/workflows/latexmk.yml` file:
 name: latexmk
 on:
   push:
-  pull_request:
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - uses: yegor256/latexmk-action@0.4.0
