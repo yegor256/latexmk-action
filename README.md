@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - uses: yegor256/latexmk-action@0.4.0
+      - uses: yegor256/latexmk-action@0.5.0
         with:
           cmd: latexmk
           path: foo
@@ -31,6 +31,8 @@ The options available (provided via the `with` YAML element):
   * `path` is a relative path of the directory with `.tex` file(s)
   * `opts` is the options to pass to `latexmk`
   * `packages` is a space-separated list of TeXLive package to install from [CTAN](https://ctan.org)
+
+## How to Contribute
 
 In order to test this action, just run:
 
