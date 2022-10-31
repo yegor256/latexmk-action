@@ -36,6 +36,8 @@ RUN tlmgr --verify-repo=none install biber
 RUN apt install -y python3-pygments
 RUN pip3 install pygments
 
+RUN apt-get -y install ghostscript
+
 WORKDIR /home
 COPY entry.sh /home
 
