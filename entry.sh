@@ -29,7 +29,7 @@ cd ${INPUT_PATH-.}
 
 if [[ "${INPUT_PACKAGES}" ]]; then
     tlmgr --verify-repo=none update --self
-    tlmgr --verify-repo=none install ${INPUT_PACKAGES}
+    tlmgr --verify-repo=none update ${INPUT_PACKAGES}
 fi
 
 ls -al
