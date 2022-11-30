@@ -20,24 +20,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-FROM yegor256/rultor-image:1.13.0
+FROM yegor256/rultor-image:1.15.0
 
 LABEL "repository"="https://github.com/yegor256/latexmk-action"
 LABEL "maintainer"="Yegor Bugayenko"
 
 RUN gem install texsc:0.6.0
 RUN gem install texqc:0.6.0
-RUN apt install -y aspell
 
 RUN tlmgr option repository ctan
 RUN tlmgr --verify-repo=none update --self
 RUN tlmgr --verify-repo=none install biber
-
-RUN apt install -y python3-pygments
-RUN pip3 install pygments
-
-RUN apt-get -y update
-RUN apt-get -y install ghostscript
 
 WORKDIR /home
 COPY entry.sh /home
