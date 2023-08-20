@@ -27,8 +27,9 @@ set -e
 cd ${GITHUB_WORKSPACE-/w}
 cd ${INPUT_PATH-.}
 
-if [[ "${INPUT_PACKAGES}" ]]; then
-    tlmgr --verify-repo=none update --self
+tlmgr --verify-repo=none update --self
+
+if [ "${INPUT_PACKAGES}" ]; then
     tlmgr --verify-repo=none update ${INPUT_PACKAGES}
 fi
 
