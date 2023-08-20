@@ -30,6 +30,7 @@ cd ${INPUT_PATH-.}
 tlmgr --verify-repo=none update --self
 
 if [ "${INPUT_PACKAGES}" ]; then
+    tlmgr --verify-repo=none install ${INPUT_PACKAGES}
     tlmgr --verify-repo=none update ${INPUT_PACKAGES}
 fi
 
