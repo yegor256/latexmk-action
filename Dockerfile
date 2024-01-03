@@ -20,13 +20,15 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-FROM yegor256/rultor-image:1.21.0
+FROM yegor256/rultor-image:1.22.0
 
 LABEL "repository"="https://github.com/yegor256/latexmk-action"
 LABEL "maintainer"="Yegor Bugayenko"
 
 RUN gem install texsc:0.6.0
 RUN gem install texqc:0.6.0
+
+RUN apt-get install -y inkscape imagemagick
 
 RUN tlmgr option repository ctan
 RUN tlmgr --verify-repo=none update --self
