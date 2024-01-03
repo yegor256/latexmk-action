@@ -8,8 +8,8 @@ name: latexmk
 on:
   push:
 jobs:
-  build:
-    runs-on: ubuntu-20.04
+  latexmk:
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2
       - uses: yegor256/latexmk-action@0.8.0
