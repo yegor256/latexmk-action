@@ -27,6 +27,7 @@ set -e
 cd "${GITHUB_WORKSPACE-/w}"
 cd "${INPUT_PATH-.}"
 
+tlmgr option repository ctan
 tlmgr --verify-repo=none update --self
 
 if [ "${INPUT_PACKAGES}" ]; then
