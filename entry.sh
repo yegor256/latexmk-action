@@ -32,7 +32,7 @@ tlmgr --verify-repo=none update --self
 
 names=${INPUT_PACKAGES}
 if [ -n "${INPUT_DEPENDS}" ]; then
-    names="${names}" $(cut -d' ' -f2 "${INPUT_DEPENDS}" | uniq)
+    names="${names} $(cut -d' ' -f2 "${INPUT_DEPENDS}" | uniq)"
 fi
 
 if [ -n "${names}" ]; then
