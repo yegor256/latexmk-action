@@ -44,4 +44,4 @@ inputs:
   packages:
     description: 'The space-separated list of LaTeX packages to install first'
     required: false
-    default: ' '
+    default: ''
