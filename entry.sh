@@ -23,9 +23,9 @@
 
 set -x
 set -e
+set -o pipefail
 
 cd "${GITHUB_WORKSPACE-/w}"
-cd "${INPUT_PATH-.}"
 
 tlmgr option repository ctan
 tlmgr --verify-repo=none update --self
@@ -40,5 +40,6 @@ if [ -n "${names}" ]; then
     tlmgr --verify-repo=none update ${names}
 fi
 
+cd "${INPUT_PATH-.}"
 ls -al
 ${INPUT_CMD} ${INPUT_OPTS}
