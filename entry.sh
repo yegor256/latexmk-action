@@ -30,12 +30,12 @@ cd "${INPUT_PATH-.}"
 tlmgr option repository ctan
 tlmgr --verify-repo=none update --self
 
-if [ "${INPUT_PACKAGES}" ]; then
+if [ -n "${INPUT_PACKAGES}" ]; then
     tlmgr --verify-repo=none install ${INPUT_PACKAGES}
     tlmgr --verify-repo=none update ${INPUT_PACKAGES}
 fi
 
-if [ "${INPUT_DEPENDS}" ]; then
+if [ -n "${INPUT_DEPENDS}" ]; then
     names=$(cut -d' ' -f2 "${INPUT_DEPENDS}" | uniq)
     tlmgr --verify-repo=none install ${names}
     tlmgr --verify-repo=none update ${names}
