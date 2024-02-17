@@ -32,7 +32,7 @@ tlmgr --verify-repo=none update --self
 
 names=( "${INPUT_PACKAGES}" )
 if [ -n "${INPUT_DEPENDS}" ]; then
-    names=( "$(cut -d' ' -f2 "${INPUT_DEPENDS}" | uniq)" )
+    names=( $(cut -d' ' -f2 "${INPUT_DEPENDS}" | uniq) )
 fi
 
 if [ ! "${#names[@]}" -eq 0 ]; then
@@ -42,5 +42,5 @@ fi
 
 cd "${INPUT_PATH-.}"
 ls -al
-opts=( "${INPUT_OPTS}" )
+opts=( ${INPUT_OPTS} )
 ${INPUT_CMD} "${opts[@]}"
