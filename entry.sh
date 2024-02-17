@@ -35,11 +35,12 @@ if [ -n "${INPUT_DEPENDS}" ]; then
     names=( "$(cut -d' ' -f2 "${INPUT_DEPENDS}" | uniq)" )
 fi
 
-if [ -n "${names}" ]; then
+if [ ! "${#names[@]}" -eq 0 ]; then
     tlmgr --verify-repo=none install "${names[@]}"
     tlmgr --verify-repo=none --no-auto-remove update "${names[@]}" || echo 'UPDATE FAILED'
 fi
 
 cd "${INPUT_PATH-.}"
 ls -al
-${INPUT_CMD} ${INPUT_OPTS}
+opts=( "${INPUT_OPTS}" )
+${INPUT_CMD} "${opts[@]}"
