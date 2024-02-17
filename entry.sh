@@ -30,14 +30,14 @@ cd "${GITHUB_WORKSPACE-/w}"
 tlmgr option repository ctan
 tlmgr --verify-repo=none update --self
 
-names=${INPUT_PACKAGES}
+names=( "${INPUT_PACKAGES}" )
 if [ -n "${INPUT_DEPENDS}" ]; then
-    names="${names} $(cut -d' ' -f2 "${INPUT_DEPENDS}" | uniq)"
+    names=( "$(cut -d' ' -f2 "${INPUT_DEPENDS}" | uniq)" )
 fi
 
 if [ -n "${names}" ]; then
-    tlmgr --verify-repo=none install ${names}
-    tlmgr --verify-repo=none --no-auto-remove update ${names} || echo 'UPDATE FAILED'
+    tlmgr --verify-repo=none install "${names[@]}"
+    tlmgr --verify-repo=none --no-auto-remove update "${names[@]}" || echo 'UPDATE FAILED'
 fi
 
 cd "${INPUT_PATH-.}"
