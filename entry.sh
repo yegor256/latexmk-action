@@ -37,7 +37,7 @@ fi
 
 if [ -n "${names}" ]; then
     tlmgr --verify-repo=none install ${names}
-    tlmgr --verify-repo=none update ${names}
+    tlmgr --verify-repo=none --no-auto-remove update ${names} || echo 'UPDATE FAILED'
 fi
 
 cd "${INPUT_PATH-.}"
