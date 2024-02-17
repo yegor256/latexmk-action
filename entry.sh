@@ -30,17 +30,17 @@ cd "${GITHUB_WORKSPACE-/w}"
 tlmgr option repository ctan
 tlmgr --verify-repo=none update --self
 
-names=( "${INPUT_PACKAGES}" )
+readarray -t packages < <(echo "${INPUT_PACKAGES}")
 if [ -n "${INPUT_DEPENDS}" ]; then
-    names=( $(cut -d' ' -f2 "${INPUT_DEPENDS}" | uniq) )
+    readarray -t packages < <(cut -d' ' -f2 "${INPUT_DEPENDS}" | uniq)
 fi
 
-if [ ! "${#names[@]}" -eq 0 ]; then
-    tlmgr --verify-repo=none install "${names[@]}"
-    tlmgr --verify-repo=none --no-auto-remove update "${names[@]}" || echo 'UPDATE FAILED'
+if [ ! "${#packages[@]}" -eq 0 ]; then
+    tlmgr --verify-repo=none install "${packages[@]}"
+    tlmgr --verify-repo=none --no-auto-remove update "${packages[@]}" || echo 'UPDATE FAILED'
 fi
 
 cd "${INPUT_PATH-.}"
 ls -al
-opts=( ${INPUT_OPTS} )
+readarray -t opts < <(echo "${INPUT_OPTS}")
 ${INPUT_CMD} "${opts[@]}"
