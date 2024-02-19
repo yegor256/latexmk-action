@@ -30,9 +30,9 @@ cd "${GITHUB_WORKSPACE-/w}"
 tlmgr option repository ctan
 tlmgr --verify-repo=none update --self
 
-readarray -t packages < <(echo "${INPUT_PACKAGES}")
+read -a packages < <(echo "${INPUT_PACKAGES}")
 if [ -n "${INPUT_DEPENDS}" ]; then
-    readarray -t packages < <(cut -d' ' -f2 "${INPUT_DEPENDS}" | uniq)
+    read -a packages < <(cut -d' ' -f2 "${INPUT_DEPENDS}" | uniq)
 fi
 
 if [ ! "${#packages[@]}" -eq 0 ]; then
@@ -42,5 +42,5 @@ fi
 
 cd "${INPUT_PATH-.}"
 ls -al
-readarray -t opts < <(echo "${INPUT_OPTS}")
+read -a opts < <(echo "${INPUT_OPTS}")
 ${INPUT_CMD} "${opts[@]}"
