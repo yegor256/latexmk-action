@@ -30,11 +30,7 @@ cd "${GITHUB_WORKSPACE-/w}"
 tlmgr option repository ctan
 tlmgr --verify-repo=none update --self
 
-packages=()
-while IFS= read -r p; do
-    packages+=( "${p}" )
-done < <( echo "${INPUT_PACKAGES}" )
-
+read -a packages <<< "${INPUT_PACKAGES}"
 if [ -n "${INPUT_DEPENDS}" ]; then
     while IFS= read -r p; do
         packages+=( "${p}" )
@@ -49,8 +45,5 @@ fi
 cd "${INPUT_PATH-.}"
 ls -al
 
-opts=()
-while IFS= read -r o; do
-    opts+=( "${o}" )
-done < <( echo "${INPUT_OPTS}" )
+read -a opts <<< "${INPUT_OPTS}"
 ${INPUT_CMD} "${opts[@]}"
