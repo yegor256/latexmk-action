@@ -41,6 +41,10 @@ inputs:
     description: 'Command-line options for latexmk'
     required: false
     default: ''
+  depends:
+    description: 'Path of DEPENDS.txt file'
+    required: false
+    default: ''
   packages:
     description: 'The space-separated list of LaTeX packages to install first'
     required: false
