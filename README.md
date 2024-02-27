@@ -35,10 +35,10 @@ The options available (provided via the `with` YAML element):
 * `opts` is the options to pass to `latexmk`
 * `packages` is a space-separated list of TeXLive package to install
   from [CTAN](https://ctan.org)
-* `depends` is a file with TeXLive packages, 
-  as CTAN 
-  [expects](https://tex.stackexchange.com/questions/598653/how-tlmgr-understands-what-dependencies-to-install) 
-  them
+* `depends` is a file with TeXLive packages,
+  as CTAN
+  [expects](https://tex.stackexchange.com/questions/598653/
+how-tlmgr-understands-what-dependencies-to-install) them
 
 ## How to Contribute
 
