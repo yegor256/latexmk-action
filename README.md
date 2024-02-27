@@ -1,3 +1,5 @@
+# Latexmk Github Action
+
 [![test](https://github.com/yegor256/latexmk-action/actions/workflows/test.yml/badge.svg)](https://github.com/yegor256/latexmk-action/actions/workflows/test.yml)
 
 To `latexmk` your LaTeX document by GitHub Action just 
@@ -27,18 +29,19 @@ a `.tex` file, skip the config, everything should work out of the box.
 
 The options available (provided via the `with` YAML element):
 
-  * `cmd` is the command to run (default is `latexmk`)
-  * `path` is a relative path of the directory with `.tex` file(s)
-  * `opts` is the options to pass to `latexmk`
-  * `packages` is a space-separated list of TeXLive package to install from [CTAN](https://ctan.org)
-  * `depends` is a file with TeXLive packages, as CTAN [expects](https://tex.stackexchange.com/questions/598653/how-tlmgr-understands-what-dependencies-to-install) them
+* `cmd` is the command to run (default is `latexmk`)
+* `path` is a relative path of the directory with `.tex` file(s)
+* `opts` is the options to pass to `latexmk`
+* `packages` is a space-separated list of TeXLive package to install from [CTAN](https://ctan.org)
+* `depends` is a file with TeXLive packages, as CTAN 
+  [expects](https://tex.stackexchange.com/questions/598653/how-tlmgr-understands-what-dependencies-to-install) them
 
 ## How to Contribute
 
 In order to test this action, just run:
 
 ```bash
-$ make test
+make test
 ```
 
 This should build a new Docker image and then try to use it
