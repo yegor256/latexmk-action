@@ -1,0 +1,10 @@
+---
+name: markdown-lint
+on:
+  push:
+jobs:
+  markdown-lint:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+      - uses: articulate/actions-markdownlint@v1
