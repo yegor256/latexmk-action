@@ -1,8 +1,9 @@
 # Latexmk Github Action
 
 [![test](https://github.com/yegor256/latexmk-action/actions/workflows/test.yml/badge.svg)](https://github.com/yegor256/latexmk-action/actions/workflows/test.yml)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/yegor256/latexmk-action/blob/master/LICENSE.txt)
 
-To `latexmk` your LaTeX document by GitHub Action just 
+To `latexmk` your LaTeX document by GitHub Action just
 create a `.github/workflows/latexmk.yml` file:
 
 ```yaml
@@ -32,9 +33,12 @@ The options available (provided via the `with` YAML element):
 * `cmd` is the command to run (default is `latexmk`)
 * `path` is a relative path of the directory with `.tex` file(s)
 * `opts` is the options to pass to `latexmk`
-* `packages` is a space-separated list of TeXLive package to install from [CTAN](https://ctan.org)
-* `depends` is a file with TeXLive packages, as CTAN 
-  [expects](https://tex.stackexchange.com/questions/598653/how-tlmgr-understands-what-dependencies-to-install) them
+* `packages` is a space-separated list of TeXLive package to install
+  from [CTAN](https://ctan.org)
+* `depends` is a file with TeXLive packages, 
+  as CTAN 
+  [expects](https://tex.stackexchange.com/questions/598653/how-tlmgr-understands-what-dependencies-to-install) 
+  them
 
 ## How to Contribute
 
