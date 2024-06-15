@@ -27,7 +27,7 @@ branding:
   color: orange
 runs:
   using: 'docker'
-  image: 'docker://yegor256/latexmk-action:latest'
+  image: 'docker://yegor256/latexmk-action:0.12.0'
 inputs:
   path:
     description: 'The directory with Makefile'
