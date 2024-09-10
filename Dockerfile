@@ -43,8 +43,7 @@ RUN apt-get -y -q update \
     && rm -rf /var/lib/apt/lists/*
 
 ENV TEXLIVE_YEAR=2024
-RUN mkdir texlive \
-  && cd texlive \
+RUN mkdir texlive && cd texlive \
   && wget -q --no-check-certificate http://mirror.ctan.org/systems/texlive/tlnet/install-tl.zip \
   && unzip -qq ./install-tl.zip -d install-tl \
   && cd install-tl/install-tl-* \
@@ -68,8 +67,6 @@ RUN tlmgr option repository ctan \
     && tlmgr --verify-repo=none update --self \
     && tlmgr --verify-repo=none install biber
 
-COPY entry.sh /home
+COPY entry.sh .
 
-RUN rm -rf /tmp/*
-
-ENTRYPOINT ["/home/entry.sh"]
+ENTRYPOINT ["/action/entry.sh"]
