@@ -26,6 +26,8 @@ LABEL "repository"="https://github.com/yegor256/latexmk-action"
 LABEL "maintainer"="Yegor Bugayenko"
 LABEL "version"="0.0.0"
 
+WORKDIR /action
+
 ENV LC_ALL=en_US.UTF-8
 ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US.UTF-8
@@ -41,14 +43,15 @@ RUN apt-get -y -q update \
     && rm -rf /var/lib/apt/lists/*
 
 ENV TEXLIVE_YEAR=2024
-RUN mkdir /tmp/texlive \
-  && cd /tmp/texlive \
-  && wget --no-check-certificate http://mirror.ctan.org/systems/texlive/tlnet/install-tl.zip \
-  && unzip ./install-tl.zip -d install-tl \
+RUN mkdir texlive \
+  && cd texlive \
+  && wget -q --no-check-certificate http://mirror.ctan.org/systems/texlive/tlnet/install-tl.zip \
+  && unzip -qq ./install-tl.zip -d install-tl \
   && cd install-tl/install-tl-* \
   && echo "selected_scheme scheme-medium" > p \
   && perl ./install-tl --profile=p \
-  && ln -s "$(ls /usr/local/texlive/${TEXLIVE_YEAR}/bin/)" "/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest"
+  && ln -s "$(ls /usr/local/texlive/${TEXLIVE_YEAR}/bin/)" "/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest" \
+  && cd .. && rm -rf texlive
 ENV PATH=${PATH}:/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest
 RUN echo "export PATH=\${PATH}:/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest" >> /root/.profile \
   && tlmgr init-usertree \
@@ -65,7 +68,6 @@ RUN tlmgr option repository ctan \
     && tlmgr --verify-repo=none update --self \
     && tlmgr --verify-repo=none install biber
 
-WORKDIR /home
 COPY entry.sh /home
 
 RUN rm -rf /tmp/*
