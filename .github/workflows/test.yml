@@ -21,9 +21,13 @@
 # SOFTWARE.
 ---
 name: test
-on:
+'on':
   push:
+    branches:
+      - master
   pull_request:
+    branches:
+      - master
 jobs:
   test:
     runs-on: ubuntu-24.04
