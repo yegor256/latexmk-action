@@ -33,25 +33,26 @@ ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US.UTF-8
 
 RUN apt-get -y -q update \
-    && apt-get -y install --no-install-recommends \
-        wget=* \
-        perl=* \
-        zip=* unzip=* \
-        inkscape=* \
-        imagemagick=* \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+  && apt-get -y install --no-install-recommends \
+    wget=* \
+    perl=* \
+    zip=* unzip=* \
+    inkscape=* \
+    imagemagick=* \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
 
 ENV TEXLIVE_YEAR=2024
+ENV PATH=${PATH}:/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest
+# hadolint disable=DL3003
 RUN wget -q --no-check-certificate http://mirror.ctan.org/systems/texlive/tlnet/install-tl.zip \
   && unzip -qq install-tl.zip -d install-tl \
   && cd install-tl/install-tl-* \
   && echo "selected_scheme scheme-medium" > p \
   && perl ./install-tl --profile=p \
-  && ln -s "$(ls /usr/local/texlive/${TEXLIVE_YEAR}/bin/)" "/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest"
-RUN rm -rf install-tl*
-ENV PATH=${PATH}:/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest
-RUN echo "export PATH=\${PATH}:/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest" >> /root/.profile \
+  && ln -s "$(ls /usr/local/texlive/${TEXLIVE_YEAR}/bin/)" "/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest" \
+  && cd /action && rm -rf install-tl* \
+  && echo "export PATH=\${PATH}:/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest" >> /root/.profile \
   && tlmgr init-usertree \
   && tlmgr install texliveonfly \
   && pdflatex --version \
@@ -60,11 +61,11 @@ RUN echo "export PATH=\${PATH}:/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest" >>
   && bash -c 'latexmk --version'
 
 RUN gem install texsc:0.6.0 \
-    && gem install texqc:0.6.0
+  && gem install texqc:0.6.0
 
 RUN tlmgr option repository ctan \
-    && tlmgr --verify-repo=none update --self \
-    && tlmgr --verify-repo=none install biber
+  && tlmgr --verify-repo=none update --self \
+  && tlmgr --verify-repo=none install biber
 
 COPY entry.sh .
 
