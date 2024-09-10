@@ -43,14 +43,13 @@ RUN apt-get -y -q update \
     && rm -rf /var/lib/apt/lists/*
 
 ENV TEXLIVE_YEAR=2024
-RUN mkdir texlive && cd texlive \
-  && wget -q --no-check-certificate http://mirror.ctan.org/systems/texlive/tlnet/install-tl.zip \
-  && unzip -qq ./install-tl.zip -d install-tl \
+RUN wget -q --no-check-certificate http://mirror.ctan.org/systems/texlive/tlnet/install-tl.zip \
+  && unzip -qq install-tl.zip -d install-tl \
   && cd install-tl/install-tl-* \
   && echo "selected_scheme scheme-medium" > p \
   && perl ./install-tl --profile=p \
-  && ln -s "$(ls /usr/local/texlive/${TEXLIVE_YEAR}/bin/)" "/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest" \
-  && cd .. && rm -rf texlive
+  && ln -s "$(ls /usr/local/texlive/${TEXLIVE_YEAR}/bin/)" "/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest"
+RUN rm -rf install-tl*
 ENV PATH=${PATH}:/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest
 RUN echo "export PATH=\${PATH}:/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest" >> /root/.profile \
   && tlmgr init-usertree \
@@ -69,4 +68,4 @@ RUN tlmgr option repository ctan \
 
 COPY entry.sh .
 
-ENTRYPOINT ["/action/entry.sh"]
+ENTRYPOINT ["/bin/bash", "--login", "/action/entry.sh"]
