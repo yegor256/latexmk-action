@@ -78,4 +78,6 @@ RUN tlmgr option repository ctan \
 WORKDIR /home
 COPY entry.sh /home
 
+RUN rm -rf /tmp/*
+
 ENTRYPOINT ["/home/entry.sh"]
