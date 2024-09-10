@@ -26,16 +26,6 @@ LABEL "repository"="https://github.com/yegor256/latexmk-action"
 LABEL "maintainer"="Yegor Bugayenko"
 LABEL "version"="0.0.0"
 
-RUN apt-get clean \
-  && apt-get update -y --fix-missing \
-  && apt-get -y install locales \
-  && locale-gen en_US.UTF-8 \
-  && dpkg-reconfigure locales \
-  && echo "LC_ALL=en_US.UTF-8\nLANG=en_US.UTF-8\nLANGUAGE=en_US.UTF-8" > /etc/default/locale \
-  && echo 'export LC_ALL=en_US.UTF-8' >> /root/.profile \
-  && echo 'export LANG=en_US.UTF-8' >> /root/.profile \
-  && echo 'export LANGUAGE=en_US.UTF-8' >> /root/.profile
-
 ENV LC_ALL=en_US.UTF-8
 ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US.UTF-8
@@ -58,7 +48,7 @@ RUN mkdir /tmp/texlive \
   && cd install-tl/install-tl-* \
   && echo "selected_scheme scheme-medium" > p \
   && perl ./install-tl --profile=p \
-  && ln -s $(ls /usr/local/texlive/${TEXLIVE_YEAR}/bin/) /usr/local/texlive/${TEXLIVE_YEAR}/bin/latest
+  && ln -s "$(ls /usr/local/texlive/${TEXLIVE_YEAR}/bin/)" "/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest"
 ENV PATH=${PATH}:/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest
 RUN echo "export PATH=\${PATH}:/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest" >> /root/.profile \
   && tlmgr init-usertree \
