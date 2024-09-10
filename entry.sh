@@ -40,6 +40,7 @@ fi
 if [ ! "${#packages[@]}" -eq 0 ]; then
     tlmgr --verify-repo=none install "${packages[@]}"
     tlmgr --verify-repo=none --no-auto-remove update "${packages[@]}" || echo 'UPDATE FAILED'
+    fmtutil-sys --all
 fi
 
 cd "${INPUT_PATH-.}"
