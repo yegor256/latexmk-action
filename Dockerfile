@@ -32,7 +32,9 @@ RUN gem install texsc:0.6.0 \
 RUN apt-get -y -q update \
     && apt-get -y install --no-install-recommends \
         inkscape=* \
-        imagemagick=*
+        imagemagick=* \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN tlmgr option repository ctan \
     && tlmgr --verify-repo=none update --self \
