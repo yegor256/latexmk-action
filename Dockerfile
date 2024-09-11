@@ -60,9 +60,6 @@ RUN wget -q --no-check-certificate http://mirror.ctan.org/systems/texlive/tlnet/
   && tlmgr install latexmk \
   && bash -c 'latexmk --version'
 
-RUN gem install texsc:0.6.0 \
-  && gem install texqc:0.6.0
-
 RUN tlmgr option repository ctan \
   && tlmgr --verify-repo=none update --self \
   && tlmgr --verify-repo=none install biber
