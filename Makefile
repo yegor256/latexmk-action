@@ -20,6 +20,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+.SHELLFLAGS := -e -o pipefail -c
+.ONESHELL:
+SHELL := bash
+
 test:
 	docker run --rm -v "$$(pwd):/w" $$(docker build -q .)
 
