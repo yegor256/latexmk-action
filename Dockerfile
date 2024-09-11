@@ -24,7 +24,7 @@ FROM ubuntu:24.04
 
 LABEL "repository"="https://github.com/yegor256/latexmk-action"
 LABEL "maintainer"="Yegor Bugayenko"
-LABEL "version"="0.0.0"
+LABEL "version"="0.13.0"
 
 WORKDIR /action
 
