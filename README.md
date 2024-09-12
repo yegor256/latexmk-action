@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v2
-      - uses: yegor256/latexmk-action@0.12.0
+      - uses: yegor256/latexmk-action@0.13.0
         with:
           cmd: latexmk
           path: foo
