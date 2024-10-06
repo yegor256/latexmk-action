@@ -54,8 +54,7 @@ RUN wget -q --no-check-certificate http://mirror.ctan.org/systems/texlive/tlnet/
   && cd /action && rm -rf install-tl* \
   && echo "export PATH=\${PATH}:/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest" >> /root/.profile \
   && tlmgr init-usertree \
-  && tlmgr install texliveonfly \
-  && tlmgr install collection-latex \
+  && tlmgr install texliveonfly collection-latex l3kernel l3packages \
   && pdflatex --version \
   && bash -c '[[ "$(pdflatex --version)" =~ "2.6" ]]' \
   && tlmgr install latexmk \
