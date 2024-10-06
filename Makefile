@@ -25,7 +25,9 @@
 SHELL := bash
 
 test:
-	docker run --rm -v "$$(pwd):/w" $$(docker build -q .)
+	docker build . -t latexmk-action
+	docker run --rm -v "$$(pwd):/w" latexmk-action
+	docker rmi latexmk-action
 
 clean:
 	rm -f *.dvi *.pdf *.fls *.aux *.fdb_latexmk *.log

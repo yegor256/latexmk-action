@@ -21,29 +21,39 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-set -x
-set -e
+set -ex
 set -o pipefail
 
-cd "${GITHUB_WORKSPACE-/w}"
+cd "${GITHUB_WORKSPACE-/w}" || exit 1
 
 tlmgr option repository ctan
 tlmgr --verify-repo=none update --self
 
 read -r -a packages <<< "${INPUT_PACKAGES}"
 if [ -n "${INPUT_DEPENDS}" ]; then
-    while IFS= read -r p; do
-        packages+=( "${p}" )
-    done < <( cut -d' ' -f2 "${INPUT_DEPENDS}" | uniq )
+  while IFS= read -r p; do
+    packages+=( "${p}" )
+  done < <( cut -d' ' -f2 "${INPUT_DEPENDS}" | uniq )
 fi
 
 if [ ! "${#packages[@]}" -eq 0 ]; then
-    tlmgr --verify-repo=none install "${packages[@]}"
-    tlmgr --verify-repo=none --no-auto-remove update "${packages[@]}" || echo 'UPDATE FAILED'
-    fmtutil-sys --all
+  tlmgr --verify-repo=none install "${packages[@]}"
+  attempts=0
+  while true; do
+    ((++attempts))
+    if tlmgr --verify-repo=none --no-auto-remove update "${packages[@]}"; then
+      break
+    fi
+    if [ "${attempts}" -gt 3 ]; then
+      echo "After ${attempts} attempts we failed to install packages, sorry :("
+      exit 1
+    fi
+    sleep "${attempts}"
+  done
+  fmtutil-sys --all
 fi
 
-cd "${INPUT_PATH-.}"
+cd "${INPUT_PATH-.}" || exit 1
 ls -al
 
 echo "latexmk-action 0.0.0"

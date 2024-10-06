@@ -48,13 +48,14 @@ ENV PATH=${PATH}:/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest
 RUN wget -q --no-check-certificate http://mirror.ctan.org/systems/texlive/tlnet/install-tl.zip \
   && unzip -qq install-tl.zip -d install-tl \
   && cd install-tl/install-tl-* \
-  && echo "selected_scheme scheme-medium" > p \
+  && echo "selected_scheme scheme-minimal" > p \
   && perl ./install-tl --profile=p \
   && ln -s "$(ls /usr/local/texlive/${TEXLIVE_YEAR}/bin/)" "/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest" \
   && cd /action && rm -rf install-tl* \
   && echo "export PATH=\${PATH}:/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest" >> /root/.profile \
   && tlmgr init-usertree \
   && tlmgr install texliveonfly \
+  && tlmgr install collection-latex \
   && pdflatex --version \
   && bash -c '[[ "$(pdflatex --version)" =~ "2.6" ]]' \
   && tlmgr install latexmk \
@@ -64,6 +65,6 @@ RUN tlmgr option repository ctan \
   && tlmgr --verify-repo=none update --self \
   && tlmgr --verify-repo=none install biber
 
-COPY entry.sh .
+COPY entry.sh ./
 
 ENTRYPOINT ["/bin/bash", "--login", "/action/entry.sh"]
