@@ -38,4 +38,5 @@ jobs:
           cmd: latexmk
           path: .
           opts: -pdf test
-          packages: ffcode fvextra catchfile xstring framed environ upquote listings
+          packages: |
+            ffcode fvextra catchfile xstring framed environ upquote listings
