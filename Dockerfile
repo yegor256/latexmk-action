@@ -39,6 +39,7 @@ RUN apt-get -y -q update \
     zip=* unzip=* \
     inkscape=* \
     imagemagick=* \
+    make=* \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
