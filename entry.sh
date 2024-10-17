@@ -56,7 +56,7 @@ fi
 cd "${INPUT_PATH-.}" || exit 1
 ls -al
 
-echo "latexmk-action 0.0.0"
+echo "latexmk-action 0.15.0"
 
 read -r -a opts <<< "${INPUT_OPTS}"
 ${INPUT_CMD} "${opts[@]}"
