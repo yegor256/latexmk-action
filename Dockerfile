@@ -44,6 +44,7 @@ RUN apt-get -y -q update \
   && rm -rf /var/lib/apt/lists/*
 
 ENV TEXLIVE_YEAR=2024
+ENV TEXLIVE_INSTALL_ENV_NOCHECK=true
 ENV PATH=${PATH}:/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest
 # hadolint ignore=DL3003
 RUN wget -q --no-check-certificate http://mirror.ctan.org/systems/texlive/tlnet/install-tl.zip \
