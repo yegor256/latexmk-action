@@ -51,7 +51,7 @@ RUN wget -q --no-check-certificate http://mirror.ctan.org/systems/texlive/tlnet/
   && unzip -qq install-tl.zip -d install-tl \
   && cd install-tl/install-tl-* \
   && echo "selected_scheme scheme-minimal" > p \
-  && perl ./install-tl --profile=p --repository=ftp://dante.ctan.org/tex-archive/systems/texlive/tlnet/ \
+  && perl ./install-tl --profile=p \
   && ln -s "$(ls /usr/local/texlive/${TEXLIVE_YEAR}/bin/)" "/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest" \
   && cd /action && rm -rf install-tl* \
   && echo "export PATH=\${PATH}:/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest" >> /root/.profile \
