@@ -35,12 +35,13 @@ jobs:
       - run: |-
           git fetch --tags --force && \
           latest=$(git tag --sort=creatordate | tail -1) && \
+          export latest && \
           sed -E -i "s/latexmk-action@.+$/latexmk-action@${latest}/g" README.md
       - uses: peter-evans/create-pull-request@v7
         with:
           branch: version-up
-          commit-message: 'new version in README'
+          commit-message: 'new version ${{ env.latest }} in README'
           delete-branch: true
-          title: 'New version in README'
+          title: 'New version ${{ env.latest }} in README'
           assignees: yegor256
           base: master

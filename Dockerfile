@@ -50,7 +50,7 @@ ENV PATH=${PATH}:/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest
 RUN wget -q --no-check-certificate http://mirror.ctan.org/systems/texlive/tlnet/install-tl.zip \
   && unzip -qq install-tl.zip -d install-tl \
   && cd install-tl/install-tl-* \
-  && echo "selected_scheme scheme-minimal" > p \
+  && echo "selected_scheme scheme-full" > p \
   && perl ./install-tl --profile=p \
   && ln -s "$(ls /usr/local/texlive/${TEXLIVE_YEAR}/bin/)" "/usr/local/texlive/${TEXLIVE_YEAR}/bin/latest" \
   && cd /action && rm -rf install-tl* \
