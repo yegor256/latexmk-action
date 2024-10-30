@@ -22,6 +22,8 @@
 ---
 docker:
   image: yegor256/rultor-ruby
+ec2:
+  type: t2.2xlarge
 assets:
   docker-password: yegor256/home#assets/docker-password
 merge:
