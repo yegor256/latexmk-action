@@ -8,7 +8,7 @@ create a `.github/workflows/latexmk.yml` file:
 
 ```yaml
 name: latexmk
-on:
+'on':
   push:
 jobs:
   latexmk:
