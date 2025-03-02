@@ -1,6 +1,9 @@
-test.pdf
+.DS_Store
+.idea/
+node_modules/
 test.aux
 test.dvi
 test.fdb_latexmk
 test.fls
 test.log
+test.pdf
