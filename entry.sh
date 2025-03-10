@@ -7,7 +7,6 @@ set -o pipefail
 
 cd "${GITHUB_WORKSPACE-/w}" || exit 1
 
-tlmgr option repository ctan
 tlmgr --verify-repo=none update --self
 
 read -r -a packages <<< "${INPUT_PACKAGES}"

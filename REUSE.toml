@@ -13,6 +13,7 @@ path = [
     "**/*.svg",
     "**/*.txt",
     "**/*.vm",
+    ".latexmkrc",
     "**/.gitignore",
     "**/CNAME",
     ".gitattributes",
