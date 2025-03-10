@@ -11,4 +11,4 @@ WORKDIR /action
 
 COPY entry.sh ./
 
-ENTRYPOINT ["/bin/bash", "--login", "/action/entry.sh"]
+ENTRYPOINT ["/action/entry.sh"]
