@@ -2,12 +2,9 @@
 # SPDX-FileCopyrightText: Copyright (c) 2021-2025 Yegor Bugayenko
 # SPDX-License-Identifier: MIT
 
-set -ex
-set -o pipefail
+set -ex -o pipefail
 
 cd "${GITHUB_WORKSPACE-/w}" || exit 1
-
-tlmgr --verify-repo=none update --self
 
 read -r -a packages <<< "${INPUT_PACKAGES}"
 if [ -n "${INPUT_DEPENDS}" ]; then
@@ -17,6 +14,7 @@ if [ -n "${INPUT_DEPENDS}" ]; then
 fi
 
 if [ ! "${#packages[@]}" -eq 0 ]; then
+  tlmgr --verify-repo=none update --self
   tlmgr --verify-repo=none install "${packages[@]}"
   attempts=0
   while true; do
