@@ -7,7 +7,7 @@ SHELL := bash
 
 test:
 	docker build . -t latexmk-action
-	docker run --rm -v "$$(pwd):/w" latexmk-action
+	docker run --rm -v "$$(pwd):/w" -e INPUT_PACKAGES=xcolor latexmk-action
 	docker rmi latexmk-action
 
 clean:
