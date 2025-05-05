@@ -22,6 +22,7 @@ jobs:
           sed -E -i "s/latexmk-action@.+$/latexmk-action@${latest}/g" README.md
       - uses: peter-evans/create-pull-request@v7
         with:
+          sign-commits: true
           branch: version-up
           commit-message: 'new version ${{ env.latest }} in README'
           delete-branch: true
