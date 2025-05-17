@@ -4,6 +4,9 @@
 .SHELLFLAGS := -e -o pipefail -c
 .ONESHELL:
 SHELL := bash
+.PHONY: all clean test
+
+all: test
 
 test:
 	docker build . -t latexmk-action
