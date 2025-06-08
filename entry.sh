@@ -4,7 +4,7 @@
 
 set -ex -o pipefail
 
-cd "${GITHUB_WORKSPACE-/w}" || exit 1
+cd "${GITHUB_WORKSPACE-/w}"
 
 read -r -a packages <<< "${INPUT_PACKAGES}"
 if [ -n "${INPUT_DEPENDS}" ]; then
@@ -31,7 +31,7 @@ if [ ! "${#packages[@]}" -eq 0 ]; then
   fmtutil-sys --all
 fi
 
-cd "${INPUT_PATH-.}" || exit 1
+cd "${INPUT_PATH-.}"
 ls -al
 
 echo "latexmk-action 0.0.0"
