@@ -37,4 +37,8 @@ ls -al
 echo "latexmk-action 0.0.0"
 
 read -r -a opts <<< "${INPUT_OPTS}"
+if [ -n "${INPUT_DOCUMENT}" ]; then
+  opts+=("${INPUT_DOCUMENT}")
+fi
+
 ${INPUT_CMD} "${opts[@]}"

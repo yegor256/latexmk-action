@@ -19,6 +19,7 @@ jobs:
         with:
           cmd: latexmk
           path: foo
+          document: paper.tex
           opts: -pdf
           packages: acmart tikz
 ```
@@ -32,6 +33,7 @@ The options available (provided via the `with` YAML element):
 
 * `cmd` is the command to run (default is `latexmk`)
 * `path` is a relative path of the directory with `.tex` file(s)
+* `document` is a name of the `.tex` file to compile (no default)
 * `opts` is the options to pass to `latexmk`
 * `packages` is a space-separated list of TeXLive package to install
   from [CTAN](https://ctan.org)
