@@ -5,7 +5,7 @@ FROM yegor256/latex:0.0.1
 
 LABEL "repository"="https://github.com/yegor256/latexmk-action"
 LABEL "maintainer"="Yegor Bugayenko"
-LABEL "version"="0.0.0"
+LABEL "version"="0.17.0"
 
 WORKDIR /action
 
