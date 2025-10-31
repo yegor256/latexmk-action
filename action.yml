@@ -26,7 +26,7 @@ inputs:
     description: 'Path of DEPENDS.txt file'
     required: false
     default: ''
-  packages:
-    description: 'The space-separated list of LaTeX packages to install first'
+  debs:
+    description: 'List of Debian packages to install with apt-get'
     required: false
     default: ''

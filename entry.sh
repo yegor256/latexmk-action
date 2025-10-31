@@ -6,6 +6,14 @@ set -ex -o pipefail
 
 cd "${GITHUB_WORKSPACE-/w}"
 
+read -r -a debs <<< "${INPUT_DEBS}"
+if [ ! "${#debs[@]}" -eq 0 ]; then
+  sudo apt-get --fix-missing --yes update
+  sudo apt-get --no-install-recommends --yes install "${debs[@]}"
+  sudo apt-get clean
+  sudo rm -rf /var/lib/apt/lists/*
+fi
+
 read -r -a packages <<< "${INPUT_PACKAGES}"
 if [ -n "${INPUT_DEPENDS}" ]; then
   while IFS= read -r p; do

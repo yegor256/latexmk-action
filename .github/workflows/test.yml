@@ -21,5 +21,6 @@ jobs:
           cmd: latexmk
           path: .
           opts: -pdf test
+          debs: fonts-noto-core fonts-noto-extra
           packages: |
             ffcode fvextra catchfile xstring framed environ upquote listings
