@@ -30,3 +30,7 @@ inputs:
     description: 'List of Debian packages to install with apt-get'
     required: false
     default: ''
+  packages:
+    description: 'List of TeXLive packages to install with tlmgr'
+    required: false
+    default: ''
