@@ -49,4 +49,4 @@ if [ -n "${INPUT_DOCUMENT}" ]; then
   opts+=("${INPUT_DOCUMENT}")
 fi
 
-${INPUT_CMD} "${opts[@]}"
+eval "${INPUT_CMD} ${opts[*]}"
