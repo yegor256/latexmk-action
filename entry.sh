@@ -42,7 +42,7 @@ fi
 cd "${INPUT_PATH-.}"
 ls -al
 
-echo "latexmk-action 0.0.0"
+echo "latexmk-action 0.18.1"
 
 read -r -a opts <<< "${INPUT_OPTS}"
 if [ -n "${INPUT_DOCUMENT}" ]; then
