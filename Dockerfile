@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: Copyright (c) 2021-2026 Yegor Bugayenko
 # SPDX-License-Identifier: MIT
 
-FROM yegor256/latex:latest
+FROM yegor256/latex
 
 LABEL "repository"="https://github.com/yegor256/latexmk-action"
 LABEL "maintainer"="Yegor Bugayenko"
