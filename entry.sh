@@ -44,6 +44,10 @@ ls -al
 
 echo "latexmk-action 0.0.0"
 
+if [ -n "${INPUT_BEFORE}" ]; then
+  eval "${INPUT_BEFORE}"
+fi
+
 read -r -a opts <<< "${INPUT_OPTS}"
 if [ -n "${INPUT_DOCUMENT}" ]; then
   opts+=("${INPUT_DOCUMENT}")
