@@ -10,8 +10,9 @@ all: test
 
 test:
 	docker build . -t latexmk-action
-	docker run --rm -v "$$(pwd):/w" -e HOME -e INPUT_PACKAGES=xcolor latexmk-action
+	docker run --rm -v "$$(pwd):/w" -e HOME -e INPUT_BEFORE='echo before > before.txt' -e INPUT_PACKAGES=xcolor latexmk-action
+	test "$$(cat before.txt)" = before
 	docker rmi latexmk-action
 
 clean:
-	rm -f *.dvi *.pdf *.fls *.aux *.fdb_latexmk *.log
+	rm -f *.dvi *.pdf *.fls *.aux *.fdb_latexmk *.log before.txt
