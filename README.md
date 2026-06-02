@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/yegor256/latexmk-action/blob/master/LICENSE.txt)
 
 To `latexmk` your LaTeX document by GitHub Action just
-create a `.github/workflows/latexmk.yml` file:
+  create a `.github/workflows/latexmk.yml` file:
 
 ```yaml
 name: latexmk
@@ -25,10 +25,12 @@ jobs:
           packages: acmart tikz
 ```
 
-Preferably, you should have `.latexmkrc` in the `foo` directory of your repository,
-which configures the behavior of [latexmk](https://mg.readthedocs.io/latexmk.html).
-If you don't have special requirements in your project, and just need to compile
-a `.tex` file, skip the config, everything should work out of the box.
+Preferably, you should have `.latexmkrc` in the `foo`
+  directory of your repository,
+which configures the behavior of [latexmk].
+If you don't have special requirements in your project,
+  and just need to compile
+  a `.tex` file, skip the config, everything should work out of the box.
 
 The options available (provided via the `with` YAML element):
 
@@ -37,10 +39,8 @@ The options available (provided via the `with` YAML element):
 * `document` is a name of the `.tex` file to compile (no default)
 * `before` is a command to run before `latexmk` starts
 * `opts` is the options to pass to `latexmk`
-* `packages` is a space-separated list of TeXLive package to install
-  from [CTAN](https://ctan.org)
-* `depends` is a file with TeXLive packages,
-  as CTAN [expects](https://tex.stackexchange.com/questions/598653) them
+* `packages` is a space-separated list of TeXLive package to install from [CTAN]
+* `depends` is a file with TeXLive packages, as CTAN [expects] them
 
 ## How to Contribute
 
@@ -51,5 +51,10 @@ make test
 ```
 
 This should build a new Docker image and then try to use it
-in order to render a simple `test.tex` document. You need to have
-[Docker](https://docs.docker.com/get-docker/) installed.
+  in order to render a simple `test.tex` document.
+You need to have [Docker] installed.
+
+[latexmk]: https://mg.readthedocs.io/latexmk.html
+[Docker]: https://docs.docker.com/get-docker/
+[CTAN]: https://ctan.org
+[expects]: https://tex.stackexchange.com/questions/598653
