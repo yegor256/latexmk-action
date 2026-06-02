@@ -42,7 +42,7 @@ fi
 cd "${INPUT_PATH-.}"
 ls -al
 
-echo "latexmk-action 0.0.0"
+echo "latexmk-action 0.20.0"
 
 if [ -n "${INPUT_BEFORE}" ]; then
   eval "${INPUT_BEFORE}"
