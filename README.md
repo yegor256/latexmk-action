@@ -12,7 +12,7 @@ name: latexmk
   push:
 jobs:
   latexmk:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v7
       - uses: yegor256/latexmk-action@0.20.0
